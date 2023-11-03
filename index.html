@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
     <title>Precificador de Pizzas</title>
 </head>
-<body>
-    
+<body>    
+    <h1>Calcule sua pizza!</h1>
+    <h2>Descubra qual possui o melhor custo benefício</h2>
 
+    <div class="container">
+        <form id="pizzas-form" action="">
+            <div class="form-group">
+                <label for="idNome">Nome da pizza:</label>
+                <input type="text" id="idNome" class="form-control" placeholder="Ex: Grande, média..." required>
+            </div>
+            <div class="form-group">
+                <label for="idTamanho">Tamanho da pizza(cm):</label>
+                <input type="number" id="idTamanho" class="form-control" placeholder="Ex: 30, 40, 60...." required>
+            </div>
+            <div class="form-group">
+                <label for="idPreco">Preço da pizza(R$):</label>
+                <input type="number" id="idPreco" class="form-control" placeholder="Ex: 60, 75.50, 90..." required>
+            </div>
+
+            <input type="button" class="btn btn-primary" value="Calcular"> 
+        </form>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="main.js"></script>
 </body>
 </html>
