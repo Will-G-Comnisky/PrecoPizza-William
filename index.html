@@ -11,26 +11,30 @@
 </head>
 <body>    
     
-    <div class="container container-fluid">
-        <h1>Calcule sua pizza!</h1>
-        <h2>Descubra qual possui o melhor custo benefício</h2>
-        <form id="pizzas-form" action="">
-            <div class="form-group">
+    <div class="container container-fluid mt-5">
+        <div class="text-center">
+            <h1>Calcule sua pizza!</h1>
+            <h2>Descubra qual possui o melhor custo benefício</h2>
+        </div>
+        <form id="pizzas-form" class="form-floating" action="">
+            <div class="form-group row text-center col-4 mx-auto mb-2">
                 <label for="idNome">Nome da pizza:</label>
                 <input type="text" id="idNome" class="form-control" placeholder="Ex: Grande, média..." required>
             </div>
-            <div class="form-group">
+            <div class="form-group row text-center col-4 mx-auto mb-2">
                 <label for="idTamanho">Tamanho da pizza(cm):</label>
                 <input type="number" id="idTamanho" class="form-control" placeholder="Ex: 30, 40, 60...." required>
             </div>
-            <div class="form-group">
+            <div class="form-group row text-center col-4 mx-auto">
                 <label for="idPreco">Preço da pizza(R$):</label>
                 <input type="number" id="idPreco" class="form-control" placeholder="Ex: 60, 75.50, 90..." required>
             </div>
 
-            <input type="submit" class="btn btn-primary" id="idRegistrar" value="Registrar"> 
-            <input type="button" class="btn btn-danger" id="idLimpar" value="Limpar Formulário">
-            <input type="button" class="btn btn-danger" id="idLimparTabela" value="Limpar Tabela">
+            <div class="row col-2 mx-auto">
+                <input type="submit" class="btn btn-primary mt-3 mb-2" id="idRegistrar" value="Registrar"> 
+                <input type="button" class="btn btn-danger mb-2" id="idLimpar" value="Limpar Formulário">
+                <input type="button" class="btn btn-danger mb-3" id="idLimparTabela" value="Limpar Tabela">
+            </div>
         </form>
         <div class="table-responsive">
             <!-- Tabela onde os resultados serão exibidos -->
