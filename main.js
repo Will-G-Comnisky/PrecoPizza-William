@@ -77,7 +77,8 @@ registrar.addEventListener('click', function(e) {
     }
 
     pizzas = calcularDiferencaPercentual(pizzas, melhorCB);
-    atualizarTabela();
+    atualizarTabela(pizzas);
+    return pizzas;
 });
 
 // Com a lógica de cálculos feita, precisamos criar a tabela que sairá como resultado na tela:
