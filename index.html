@@ -29,8 +29,26 @@
             </div>
 
             <input type="submit" class="btn btn-primary" id="idRegistrar" value="Registrar"> 
-            <input type="button" class="btn btn-danger" id="idLimpar" value="Limpar">
+            <input type="button" class="btn btn-danger" id="idLimpar" value="Limpar Formulário">
+            <input type="button" class="btn btn-danger" id="idLimparTabela" value="Limpar Tabela">
         </form>
+        <div class="table-responsive">
+            <!-- Tabela onde os resultados serão exibidos -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tamanho (cm)</th>
+                                <th>Preço (R$)</th>
+                                <th>Preço por cm² (R$)</th>
+                                <th>Diferença Percentual</th>
+                            </tr>
+                        </thead>
+                        <tbody class="pizzas-table">
+            <!-- Dados da tabela que virão do script -->
+                        </tbody>
+                    </table>
+        </div>
     </div>
 
 
