@@ -14,8 +14,8 @@ document.getElementById('idLimparTabela').addEventListener('click', function() {
 // Temos que prever a possível tentativa do usuário colocar valores como 0 para o tamanho ou preço, nesse caso:
 function validarTamanho() {
     let tamanho = document.getElementById('idTamanho').value;
-    if (tamanho <= 0) {
-        alert('O tamanho da pizza deve ser maior que zero.');
+    if (tamanho <= 0 || tamanho.trim() === '') {
+        alert('O tamanho da pizza deve existir e ser maior que zero.');
         return false;
     }
     return true;
@@ -38,10 +38,32 @@ function validarFormulario() {
 var pizzas = [];
 var melhorCB = null; // Inicializando o melhorCB como nulo
 
-// Função para calcular a diferença percentual e atualizar os dados
-function atualizarDiferencaPercentual(pizza) {
-    
+// Função para calcular pizza
+function calcularPizza() {
+    let nome = document.getElementById('idNome').value;
+    let tamanho = document.getElementById('idTamanho').value;
+    let preco = parseFloat(document.getElementById('idPreco').value).toFixed(2);
 
+    // Ao registrar a pizza, cria-se as variaveis para fazerem o cálculo da área e preço por cm²
+    // Porém, antes disso é necessário verificar se a pizza é retangular/quadrada ou circular
+    if (tamanho.includes('x') || tamanho.includes('X')) {
+        // Pizza retangular/quadrada
+        let medidas = tamanho.split(/[xX]/);
+        let comprimento = parseFloat(medidas[0]);
+        let largura = parseFloat(medidas[1]);
+        area = comprimento * largura;
+    } else {
+        // Pizza redonda
+        let raio = parseFloat(tamanho / 2);
+        let area = Math.PI * Math.pow(raio, 2);
+    }
+    
+    let precoPorCm2 = (preco / area).toFixed(3);
+    
+    let pizza = [nome, tamanho, preco, precoPorCm2, 'Melhor custo benefício!' ];
+    pizzas.push(pizza)
+
+    return pizzas;
 }
 
 // Evento listener que ocorre ao clicar no botão registrar:
@@ -55,18 +77,10 @@ registrar.addEventListener('click', function(e) {
         return;
     }
     
-    let nome = document.getElementById('idNome').value;
-    let tamanho = parseFloat(document.getElementById('idTamanho').value);
-    let preco = parseFloat(document.getElementById('idPreco').value).toFixed(2);
-    // Primeiro, ao registrar a pizza, cria-se as variaveis para fazerem o cálculo da área e preço por cm²
-    let raio = tamanho / 2;
-    let area = Math.PI * Math.pow(raio, 2);
-    let precoPorCm2 = (preco / area).toFixed(3);
-    
-    let pizza = [nome, tamanho, preco, precoPorCm2, 'Melhor custo benefício!' ];
-    
-    pizzas.push(pizza)
-    
+    // Chama a função que calcula o tamanho da pizza e fornece os dados da mesma
+    calcularPizza()
+
+    // Verificação do melhor custo beneficio
     if (pizzas.length > 1) {
         var melhorCB = pizzas.reduce(function (prev, current) {
             return (prev[3] < current[3]) ? prev : current;
@@ -116,8 +130,10 @@ function atualizarTabela(dados) {
 }
 
 
+
+
 /*
-TRECHO DE CÓDIGOS QUE ESTAVAM SENDO USADOS MAS FORAM ALTERADOS:
+TRECHO DE CÓDIGOS QUE ESTAVAM SENDO USADOS MAS FORAM ALTERADOS/DESCARTADOS:
 var melhorCB = pizzas[0];
 for (var i = 1; i < pizzas.length; i++) {
     if (pizzas[i][3] > melhorCB[3]) {
